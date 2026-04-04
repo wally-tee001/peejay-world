@@ -435,6 +435,77 @@ input {
   font-weight: 700;
 }
 
+.page-shell {
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, rgba(212, 175, 55, 0.12), transparent 22%),
+              linear-gradient(180deg, rgba(11, 9, 6, 0.95), #050402 100%);
+}
+
+.login-page,
+.order-page {
+  display: grid;
+  place-items: center;
+  min-height: calc(100vh - 132px);
+  padding: 4rem 0 2rem;
+}
+
+.form-section,
+.order-section {
+  width: min(520px, 100%);
+  margin: 0 auto;
+  padding: 3rem;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.14);
+  box-shadow: var(--shadow);
+}
+
+.form-section h1,
+.order-section h1 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2rem, 3vw, 2.7rem);
+  color: var(--text);
+}
+
+.page-form label {
+  color: var(--text);
+}
+
+.form-section input,
+.page-form input {
+  width: 100%;
+}
+
+.form-section button,
+.order-section button {
+  margin-top: 1.75rem;
+  width: 100%;
+}
+
+.order-section p {
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.order-card {
+  margin: 2rem 0;
+  padding: 1.8rem;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+}
+
+.order-card p {
+  margin: 0;
+  color: var(--text);
+}
+
+.page-footer-message {
+  margin-top: 1.5rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
 .site-footer {
   padding: 2rem 0 3rem;
 }
