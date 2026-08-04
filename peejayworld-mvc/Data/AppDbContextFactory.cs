@@ -22,6 +22,18 @@ public class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
         if (string.IsNullOrWhiteSpace(connectionString))
             throw new InvalidOperationException("ConnectionStrings:DefaultConnection is missing.");
 
+        // Allow the password to be supplied at runtime via env var
+        // (ConnectionStrings__DefaultPassword / PGPASSWORD / DB_PASSWORD) so it stays out of source control.
+        var password = configuration["ConnectionStrings:DefaultPassword"]
+            ?? configuration["PGPASSWORD"]
+            ?? configuration["DB_PASSWORD"];
+
+        if (!string.IsNullOrWhiteSpace(password) &&
+            !connectionString.Contains("Password=", StringComparison.OrdinalIgnoreCase))
+        {
+            connectionString += $"Password={password};";
+        }
+
         var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
         optionsBuilder.UseNpgsql(connectionString);
 

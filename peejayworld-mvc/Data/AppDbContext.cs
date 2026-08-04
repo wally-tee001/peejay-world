@@ -10,6 +10,8 @@ public class AppDbContext : DbContext
 
     public DbSet<ContactMessage> ContactMessages => Set<ContactMessage>();
 
+    public DbSet<NewsletterSubscription> NewsletterSubscriptions => Set<NewsletterSubscription>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -26,6 +28,16 @@ public class AppDbContext : DbContext
             entity.Property(x => x.CreatedAtUtc).IsRequired();
 
             entity.HasIndex(x => x.Email);
+        });
+
+        modelBuilder.Entity<NewsletterSubscription>(entity =>
+        {
+            entity.ToTable("newsletter_subscriptions");
+
+            entity.Property(x => x.Email).HasMaxLength(320).IsRequired();
+            entity.Property(x => x.SubscribedAtUtc).IsRequired();
+
+            entity.HasIndex(x => x.Email).IsUnique();
         });
     }
 }

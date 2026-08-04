@@ -18,7 +18,7 @@
                 <nav class="main-nav" id="main-nav">
                     <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     <a asp-area="" asp-controller="Home" asp-action="About">About Us</a>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                    <a asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
                     <a asp-area="" asp-controller="Home" asp-action="PersonalCare">Personal Care</a>
                     <a asp-area="" asp-controller="Home" asp-action="CosmeticsStore">Cosmetics</a>
                     <a asp-area="" asp-controller="Home" asp-action="BeautySalon">Beauty Salon</a>
@@ -36,7 +36,7 @@
                 <p>Peejay's World © 2026</p>
                 <div class="footer-links">
                     <a asp-area="" asp-controller="Home" asp-action="About">About Us</a>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                    <a asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
                 </div>
             </div>
         </footer>
@@ -55,5 +55,6 @@
             }
         })();
     </script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

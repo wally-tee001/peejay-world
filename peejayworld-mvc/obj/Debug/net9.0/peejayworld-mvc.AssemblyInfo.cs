@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("peejayworld-mvc")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c35967622bd3351828b3957e3664691185e6e702")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5f185a21a2e6700c4c45db152f9a76c2fe8727c8")]
 [assembly: System.Reflection.AssemblyProductAttribute("peejayworld-mvc")]
 [assembly: System.Reflection.AssemblyTitleAttribute("peejayworld-mvc")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home";
+    var subscribed = Context.Request.Query["subscribed"].ToString() == "true";
 }
 
 <section class="hero-section">
@@ -114,7 +115,7 @@
                     <span>Contact Us</span>
                     <h3>Reach Out</h3>
                     <p>Have a question or a suggestion? Contact us directly and we'll get back to you quickly.</p>
-                    <a asp-area="" asp-controller="Home" asp-action="Contact" class="text-link">Contact Support</a>
+                    <a asp-area="" asp-controller="Contact" asp-action="Index" class="text-link">Contact Support</a>
                 </div>
             </article>
             <article class="card product-card">
@@ -135,9 +136,14 @@
             <p class="eyebrow">Stay in the glow</p>
             <h2>Join our insider list for new launches and private offers.</h2>
         </div>
-        <form class="newsletter-form">
-            <input type="email" placeholder="Enter your email" aria-label="Email address" />
+<form class="newsletter-form" asp-controller="Newsletter" asp-action="Subscribe" method="post">
+            @Html.AntiForgeryToken()
+            <input type="email" name="Email" placeholder="Enter your email" aria-label="Email address" required />
             <button type="submit" class="btn btn-primary">Subscribe</button>
         </form>
+        @if (subscribed)
+        {
+            <p class="form-success">Thank you! You have been added to our newsletter.</p>
+        }
     </div>
 </section>

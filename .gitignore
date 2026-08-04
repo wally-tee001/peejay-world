@@ -1,0 +1,53 @@
+# Visual Studio / .NET
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build output
+[Bb]in/
+[Oo]bj/
+
+# Rider
+.idea/
+
+# ASP.NET Core
+# (default publish/build folders)
+**/bin/
+**/obj/
+
+# EF Core migrations snapshot / temporary caches are typically safe to keep, but
+# if you generate transient build artifacts under obj, they are already covered above.
+
+# Logs
+*.log
+Logs/
+
+# NuGet
+.nuget/
+packages/
+
+# Node (if any tooling exists)
+node_modules/
+
+# Environment secrets - track appsettings.json (no secrets) but ignore local dev files
+# that may contain connection strings/passwords.
+appsettings.Development.json
+appsettings.Production.json
+appsettings.*.local.json
+
+# Local dev files
+*.db
+*.sqlite
+*.mdf
+*.ldf
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Keep git from tracking runtime secrets files explicitly if used later
+# (override with -! patterns if needed).
+
