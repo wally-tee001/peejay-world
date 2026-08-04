@@ -12,15 +12,19 @@
       <div class="container header-inner">
         <a href="index.html" class="brand">peejay's world</a>
         <nav class="main-nav">
-          <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
-          <a href="contact.html">Contact</a>
-          <a href="personal-care.html">Personal Care</a>
-          <a href="cosmetics-store.html">Cosmetics</a>
-          <a href="beauty-salon.html">Beauty Salon</a>
-          <a href="login.html">Login</a>
-          <a href="order.html">Order</a>
-          <a href="index.html#newsletter">Join</a>
+          <button class="nav-toggle" aria-expanded="false" aria-controls="site-navigation" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); this.nextElementSibling.classList.toggle('open');">Menu</button>
+          <ul id="site-navigation" class="main-nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="personal-care.html">Personal Care</a></li>
+            <li><a href="cosmetics-store.html">Cosmetics</a></li>
+            <li><a href="beauty-salon.html">Beauty Salon</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="order.html">Order</a></li>
+            <li><a href="index.html#newsletter">Join</a></li>
+          </ul>
         </nav>
       </div>
     </header>
@@ -33,6 +37,40 @@
           <p>No order details available yet.</p>
         </div>
         <button type="button" class="btn btn-secondary">Continue</button>
+      </section>
+      <section class="section media-section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Order Extras</p>
+            <h2>Preview your style with local imagery and video.</h2>
+          </div>
+          <div class="media-grid">
+            <article class="media-card">
+              <img src="../pj%20pic/WhatsApp%20Image%202026-06-21%20at%2011.11.33%20AM.jpeg" alt="Classic fashion preview" loading="lazy">
+              <div class="card-body">
+                <h3>Order Preview</h3>
+                <p>A local image to illustrate the feeling of a new purchase.</p>
+              </div>
+            </article>
+            <article class="media-card">
+              <img src="../pj%20pic/WhatsApp%20Image%202026-08-04%20at%2010.39.14%20AM.jpeg" alt="Fashion highlights" loading="lazy">
+              <div class="card-body">
+                <h3>Highlight Shot</h3>
+                <p>Use your own product photo to make the order page more personal.</p>
+              </div>
+            </article>
+            <article class="media-card">
+              <video controls muted playsinline preload="metadata" class="media-video">
+                <source src="../pj%20pic/WhatsApp%20Video%202026-08-04%20at%2010.43.33%20AM.mp4" type="video/mp4">
+                Your browser does not support video playback.
+              </video>
+              <div class="card-body">
+                <h3>Order Motion</h3>
+                <p>A local clip to show the lifestyle behind your collection.</p>
+              </div>
+            </article>
+          </div>
+        </div>
       </section>
     </main>
 

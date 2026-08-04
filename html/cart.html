@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peejay's World - Cart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="index.html" class="brand">peejay's world</a>
+        <nav class="main-nav">
+          <button class="nav-toggle" aria-expanded="false" aria-controls="site-navigation" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); this.nextElementSibling.classList.toggle('open');">Menu</button>
+          <ul id="site-navigation" class="main-nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="wristwatch.html">wristwatch</a></li>
+            <li><a href="jewelleries.html">jewelleries</a></li>
+            <li><a href="dresses.html">dresses</a></li>
+            <li><a href="order.html">Order</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="index.html#newsletter">Join</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page order-page">
+      <section class="order-section">
+        <h1>Your Cart</h1>
+        <p>Review the items added to your cart before checkout.</p>
+
+        <div class="order-card">
+          <div class="table-responsive">
+            <table class="cart-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Qty</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Evening Gown</td>
+                  <td>$129</td>
+                  <td>1</td>
+                  <td>$129</td>
+                </tr>
+                <tr>
+                  <td>Statement Neckpiece</td>
+                  <td>$189</td>
+                  <td>1</td>
+                  <td>$189</td>
+                </tr>
+                <tr>
+                  <td>Timeless Watch</td>
+                  <td>$249</td>
+                  <td>1</td>
+                  <td>$249</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="cart-summary">
+            <div class="summary-item">
+              <strong>Subtotal</strong>
+              <p>$567</p>
+            </div>
+            <div class="summary-item">
+              <strong>Estimated Shipping</strong>
+              <p>$25</p>
+            </div>
+            <div class="summary-item">
+              <strong>Total</strong>
+              <p>$592</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-actions">
+          <a href="order.html" class="btn btn-primary">Proceed to Checkout</a>
+          <a href="index.html" class="btn btn-secondary">Continue Shopping</a>
+        </div>
+      </section>
+      <section class="section media-section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Cart Preview</p>
+            <h2>Local style assets to support your checkout page.</h2>
+          </div>
+          <div class="media-grid">
+            <article class="media-card">
+              <img src="../pj%20pic/u%208.jpeg" alt="Cart accessory image" loading="lazy">
+              <div class="card-body">
+                <h3>Accessory Detail</h3>
+                <p>A local photo that enhances the shopping cart feel.</p>
+              </div>
+            </article>
+            <article class="media-card">
+              <img src="../pj%20pic/logo%20oo1.jpeg" alt="Brand signature image" loading="lazy">
+              <div class="card-body">
+                <h3>Brand Touch</h3>
+                <p>The page uses your own logo file to keep the experience familiar.</p>
+              </div>
+            </article>
+            <article class="media-card">
+              <video controls muted playsinline preload="metadata" class="media-video">
+                <source src="../pj%20pic/WhatsApp%20Video%202026-08-04%20at%2010.43.21%20AM.mp4" type="video/mp4">
+                Your browser does not support video playback.
+              </video>
+              <div class="card-body">
+                <h3>Shopping Motion</h3>
+                <p>A video from your files adds a modern dynamic accent to the cart.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>Peejay's World © 2026</p>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script>
+    (function(){
+      function closeAll(){
+        document.querySelectorAll('.main-nav-list.open').forEach(function(list){
+          list.classList.remove('open');
+          const btn = list.parentElement && list.parentElement.querySelector('.nav-toggle');
+          if(btn) btn.setAttribute('aria-expanded','false');
+        });
+      }
+      document.querySelectorAll('.main-nav').forEach(function(nav){
+        const toggle = nav.querySelector('.nav-toggle');
+        const list = nav.querySelector('.main-nav-list');
+        if(!toggle||!list) return;
+        toggle.addEventListener('click', function(e){
+          const open = list.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open? 'true':'false');
+          e.stopPropagation();
+        });
+        list.addEventListener('click', function(e){ e.stopPropagation(); });
+      });
+      document.addEventListener('click', closeAll);
+      document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeAll(); });
+    })();
+  </script>
+</body>
+</html>

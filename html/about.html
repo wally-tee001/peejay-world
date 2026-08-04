@@ -15,19 +15,23 @@
       <div class="container header-inner">
         <a href="index.html" class="brand">peejay's world</a>
         <nav class="main-nav">
-          <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
-          <a href="personal-care.html">Personal Care</a>
-          <a href="cosmetics-store.html">Cosmetics</a>
-          <a href="beauty-salon.html">Beauty Salon</a>
-          <a href="contact.html">Contact</a>
-          <a href="index.html#newsletter">Join</a>
+           <button class="nav-toggle" aria-expanded="false" aria-controls="site-navigation" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); this.nextElementSibling.classList.toggle('open');">Menu</button>
+           <ul id="site-navigation" class="main-nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="wristwatch.html">wristwatch</a></li>
+            <li><a href="jewelleries.html">jewelleries</a></li>
+            <li><a href="dresses.html">dresses</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html#newsletter">Join</a></li>
+           </ul>
         </nav>
       </div>
     </header>
 
     <section class="hero-section">
-      <div class="hero-overlay"></div>
+      <div class="hero-overlay"></div>  
       <div class="container hero-content">
         <div class="hero-copy">
           <p class="eyebrow">Fashion House</p>
@@ -82,6 +86,40 @@
           </div>
         </div>
       </section>
+      <section class="section media-section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">About Visuals</p>
+            <h2>Local photography and videos from your collection.</h2>
+          </div>
+          <div class="media-grid">
+            <article class="media-card">
+              <img src="../pj%20pic/logo%20oo1.jpeg" alt="Peejay logo image" loading="lazy">
+              <div class="card-body">
+                <h3>Brand Identity</h3>
+                <p>Your local logo image reinforces the about page look and feel.</p>
+              </div>
+            </article>
+            <article class="media-card">
+              <img src="../pj%20pic/WhatsApp%20Image%202026-06-21%20at%2011.11.32%20AM.jpeg" alt="Fashion inspiration image" loading="lazy">
+              <div class="card-body">
+                <h3>Design Inspiration</h3>
+                <p>A carefully selected image from your own library helps build trust.</p>
+              </div>
+            </article>
+            <article class="media-card">
+              <video controls muted playsinline preload="metadata" class="media-video">
+                <source src="../pj%20pic/WhatsApp%20Video%202026-08-04%20at%2010.43.21%20AM.mp4" type="video/mp4">
+                Your browser does not support video playback.
+              </video>
+              <div class="card-body">
+                <h3>Community Clips</h3>
+                <p>A local video sample brings your about story to life with movement.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -94,5 +132,29 @@
       </div>
     </footer>
   </div>
-</body>
-</html>
+    <script>
+      (function(){
+        function closeAll(){
+          document.querySelectorAll('.main-nav-list.open').forEach(function(list){
+            list.classList.remove('open');
+            const btn = list.parentElement && list.parentElement.querySelector('.nav-toggle');
+            if(btn) btn.setAttribute('aria-expanded','false');
+          });
+        }
+        document.querySelectorAll('.main-nav').forEach(function(nav){
+          const toggle = nav.querySelector('.nav-toggle');
+          const list = nav.querySelector('.main-nav-list');
+          if(!toggle||!list) return;
+          toggle.addEventListener('click', function(e){
+            const open = list.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', open? 'true':'false');
+            e.stopPropagation();
+          });
+          list.addEventListener('click', function(e){ e.stopPropagation(); });
+        });
+        document.addEventListener('click', closeAll);
+        document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeAll(); });
+      })();
+    </script>
+  </body>
+  </html>

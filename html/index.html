@@ -15,15 +15,18 @@
       <div class="container header-inner">
         <a href="index.html" class="brand">peejay's world</a>
         <nav class="main-nav">
-          <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
-          <a href="contact.html">Contact</a>
-          <a href="personal-care.html">Personal Care</a>
-          <a href="cosmetics-store.html">Cosmetics</a>
-          <a href="beauty-salon.html">Beauty Salon</a>
-          <a href="login.html">Login</a>
-          <a href="order.html">Order</a>
-          <a href="#newsletter">Join</a>
+          <button class="nav-toggle" aria-expanded="false" aria-controls="site-navigation" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); this.nextElementSibling.classList.toggle('open');">Menu</button>
+          <ul id="site-navigation" class="main-nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="wristwatch.html">wristwatch</a></li>
+            <li><a href="jewelleries.html">jewelleries</a></li>
+            <li><a href="dresses.html">dresses</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="order.html">Order</a></li>
+          </ul>
         </nav>
       </div>
     </header>
@@ -50,121 +53,40 @@
       </div>
     </section>
 
-    <section class="section quote-section">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Beauty Quotes</p>
-          <h2>Inspiration for your style  journey.</h2>
-        </div>
-        <div class="grid cards-grid">
-          <article class="card product-card">
-            <div class="card-body">
-              <span>Quote</span>
-              <h3>Beauty begins</h3>
-              <p>"Beauty begins the moment you decide to be yourself." — Coco Chanel</p>
-            </div>
-          </article>
-          <article class="card product-card">
-            <div class="card-body">
-              <span>Quote</span>
-              <h3>Style is a message</h3>
-              <p>"Style is a way to say who you are without having to speak." — Rachel Zoe</p>
-            </div>
-          </article>
-          <article class="card product-card">
-            <div class="card-body">
-              <span>Quote</span>
-              <h3>Confidence and beauty</h3>
-              <p>"The best thing is to look natural, but it takes makeup to look natural." — Calvin Klein</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <main>
-      <section id="collections" class="section collections-section">
+      <div id="react-root"></div>
+      <section class="section media-section">
         <div class="container">
           <div class="section-heading">
-            <p class="eyebrow">top products</p>
-            <h2>get high quality product.</h2>
+            <p class="eyebrow">Featured Media</p>
+            <h2>Local images and video highlights.</h2>
           </div>
-          <div class="grid cards-grid">
-            <article class="card product-card">
-              <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=80" alt="Luxury lip gloss" loading="lazy">
+          <div class="media-grid">
+            <article class="media-card">
+              <img src="../pj%20pic/8y7etx.jpeg" alt="Elegant product styling" loading="lazy">
               <div class="card-body">
-                <span>Diamond Lip Gloss</span>
-                <h3>Shine Bright</h3>
-                <p>Experience the ultimate in lip luxury with our Diamond Lip Gloss, a shimmering formula for radiant shine.</p>
-                <a href="personal-care.html" class="text-link">Explore the Look</a>
+                <h3>Product Showcase</h3>
+                <p>A clean styling shot pulled from your local photo collection.</p>
               </div>
             </article>
-            <article class="card product-card">
-              <img src="https://images.unsplash.com/photo-1498079022511-d15614cb1c02?auto=format&fit=crop&w=800&q=80" alt="Golden highlighter" loading="lazy">
+            <article class="media-card">
+              <img src="../pj%20pic/7dyg5h7.jpeg" alt="Jewellery and fashion detail" loading="lazy">
               <div class="card-body">
-                <span>Golden Highlighter</span>
-                <h3>Glow Like the Sun</h3>
-                <p>Build a warm, luminous glow with our silky highlighter that catches every light.</p>
-                <a href="cosmetics-store.html" class="text-link">Explore Cosmetics</a>
+                <h3>Accessory Detail</h3>
+                <p>Use your own local image to bring product texture into the homepage.</p>
               </div>
             </article>
-            <article class="card product-card">
-              <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" alt="Silk serum" loading="lazy">
+            <article class="media-card">
+              <video controls muted playsinline preload="metadata" class="media-video">
+                <source src="../pj%20pic/WhatsApp%20Video%202026-08-04%20at%2010.43.21%20AM.mp4" type="video/mp4">
+                Your browser does not support video playback.
+              </video>
               <div class="card-body">
-                <span>Silk Serum</span>
-                <h3>Silky Smooth Skin</h3>
-                <p>Keep your skin soft and luminous with a nurturing serum designed for all-day comfort.</p>
-                <a href="beauty-salon.html" class="text-link">Explore Treatments</a>
+                <h3>Style in Motion</h3>
+                <p>A local video clip from your library adds a richer brand experience.</p>
               </div>
             </article>
           </div>
-        </div>
-      </section>
-      <section id="more-links" class="section more-links-section">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow">Explore Pages</p>
-            <h2>Open the most relevant fashion and beauty areas of the site.</h2>
-          </div>
-          <div class="grid cards-grid">
-            <article class="card product-card">
-              <div class="card-body">
-                <span>About Us</span>
-                <h3>Who We Are</h3>
-                <p>Learn about Peejay's World, our mission, and how we help keep you glowing.</p>
-                <a href="about.html" class="text-link">View About Us</a>
-              </div>
-            </article>
-            <article class="card product-card">
-              <div class="card-body">
-                <span>Contact Us</span>
-                <h3>Reach Out</h3>
-                <p>Have a question or a suggestion? Contact us directly and we'll get back to you quickly.</p>
-                <a href="contact.html" class="text-link">Contact Support</a>
-              </div>
-            </article>
-            <article class="card product-card">
-              <div class="card-body">
-                <span>Beauty Salon</span>
-                <h3>Styled Services</h3>
-                <p>Discover salon-inspired beauty rituals, skin prep, and glowing finish tips.</p>
-                <a href="beauty-salon.html" class="text-link">Visit Salon</a>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="newsletter" class="section newsletter-section">
-        <div class="container newsletter-card">
-          <div>
-            <p class="eyebrow">Stay in the glow</p>
-            <h2>Join our insider list for new launches and private offers.</h2>
-          </div>
-          <form class="newsletter-form">
-            <input type="email" placeholder="Enter your email" aria-label="Email address">
-            <button type="submit" class="btn btn-primary">Subscribe</button>
-          </form>
         </div>
       </section>
     </main>
@@ -179,5 +101,193 @@
       </div>
     </footer>
   </div>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script>
+    const { createElement: e, useState, useMemo } = React;
+    const { createRoot } = ReactDOM;
+
+    function getCurrencyInfo() {
+      const locale = navigator.language || 'en-US';
+      const region = (locale.split('-')[1] || 'US').toUpperCase();
+      const currencyMap = {
+        US: 'USD', GB: 'GBP', IE: 'EUR', FR: 'EUR', DE: 'EUR', ES: 'EUR', IT: 'EUR', NL: 'EUR', CA: 'CAD', AU: 'AUD', NZ: 'NZD', IN: 'INR', NG: 'NGN', KE: 'KES', ZA: 'ZAR', JP: 'JPY'
+      };
+      const currency = currencyMap[region] || 'USD';
+      const rateMap = {
+        USD: 1, GBP: 0.78, EUR: 0.92, CAD: 1.35, AUD: 1.50, NZD: 1.60, INR: 82.00, NGN: 1320.00, KES: 147.00, ZAR: 18.00, JPY: 150.00
+      };
+      return { locale, currency, rate: rateMap[currency] || 1, region };
+    }
+
+    function formatPrice(amount, locale, currency, rate) {
+      const value = amount * rate;
+      return new Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency,
+        maximumFractionDigits: 0
+      }).format(value);
+    }
+
+    function Badge({ text }) {
+      return e('span', { className: 'badge' }, text);
+    }
+
+    function ProductCard({ product, locale, currency, rate }) {
+      return e('article', { className: 'card product-card' },
+        e('img', { src: product.image, alt: product.title, loading: 'lazy' }),
+        e('div', { className: 'card-body' },
+          e('div', { className: 'product-header' },
+            e('span', null, product.subtitle),
+            e(Badge, { text: product.label })
+          ),
+          e('h3', null, product.title),
+          e('p', null, product.description),
+          e('p', { className: 'product-price' }, formatPrice(product.price, locale, currency, rate)),
+          e('div', { className: 'product-actions' },
+            e('button', { type: 'button', className: 'btn btn-secondary' }, 'Add to Cart'),
+            e('a', { href: '#', className: 'text-link' }, 'View Details')
+          )
+        )
+      );
+    }
+
+    function App() {
+      const [activeCategory, setActiveCategory] = useState('all');
+      const [search, setSearch] = useState('');
+      const currencyInfo = useMemo(() => getCurrencyInfo(), []);
+      const { locale, currency, rate, region } = currencyInfo;
+
+      const categories = [
+        { id: 'all', label: 'All' },
+        { id: 'dresses', label: 'Dresses' },
+        { id: 'jewelleries', label: 'Jewelleries' },
+        { id: 'wristwatch', label: 'Wristwatch' },
+        { id: 'beauty-salon', label: 'Beauty Salon' }
+      ];
+
+      const products = [
+        {
+          id: 'dresses-01',
+          category: 'dresses',
+          title: 'Evening Gown',
+          subtitle: 'Elegant Dress',
+          label: 'New',
+          image: '../pj%20pic/WhatsApp%20Image%202026-06-21%20at%2011.11.31%20AM%20(1).jpeg',
+          description: 'A graceful dress design with rich textures for special nights.',
+          price: 129
+        },
+        {
+          id: 'jewellery-01',
+          category: 'jewelleries',
+          title: 'Statement Neckpiece',
+          subtitle: 'Fine Jewellery',
+          label: 'Trending',
+          image: '../pj%20pic/WhatsApp%20Image%202026-06-21%20at%2011.11.31%20AM.jpeg',
+          description: 'Bold and luminous pieces to complete your look with shine.',
+          price: 189
+        },
+        {
+          id: 'watch-01',
+          category: 'wristwatch',
+          title: 'Timeless Watch',
+          subtitle: 'Wristwatch',
+          label: 'Popular',
+          image: '../pj%20pic/u%208.jpeg',
+          description: 'Classic timepiece styling that pairs with both day and evening looks.',
+          price: 249
+        },
+        {
+          id: 'salon-01',
+          category: 'beauty-salon',
+          title: 'Premium Treatment',
+          subtitle: 'Salon',
+          label: 'Featured',
+          image: '../pj%20pic/guh.jpeg',
+          description: 'Luxury salon services for polished beauty and hair refinement.',
+          price: 99
+        }
+      ];
+
+      const visibleProducts = products.filter(product => {
+        const matchesCategory = activeCategory === 'all' || product.category === activeCategory;
+        const matchesSearch = product.title.toLowerCase().includes(search.toLowerCase()) || product.subtitle.toLowerCase().includes(search.toLowerCase());
+        return matchesCategory && matchesSearch;
+      });
+
+      return e('div', null,
+        e('section', { className: 'section collections-section' },
+          e('div', { className: 'container' },
+            e('div', { className: 'section-heading' },
+              e('p', { className: 'eyebrow' }, 'shop by category'),
+              e('h2', null, 'Discover your favorite products fast.')
+            ),
+            e('div', { className: 'search-bar' },
+              e('input', {
+                className: 'search-input',
+                type: 'search',
+                placeholder: `Search products in ${region}`,
+                value: search,
+                onChange: event => setSearch(event.target.value)
+              })
+            ),
+            e('div', { className: 'filter-controls' },
+              categories.map(category =>
+                e('button', {
+                  key: category.id,
+                  type: 'button',
+                  className: `btn filter-button${activeCategory === category.id ? ' active' : ''}`,
+                  onClick: () => setActiveCategory(category.id)
+                }, category.label)
+              )
+            ),
+            e('div', { className: 'market-status' },
+              e('p', null, `Showing ${visibleProducts.length} products · Prices in ${currency} (${region})`)
+            ),
+            e('div', { className: 'grid cards-grid category-grid' },
+              visibleProducts.map(product =>
+                e(ProductCard, {
+                  key: product.id,
+                  product,
+                  locale,
+                  currency,
+                  rate
+                })
+              )
+            )
+          )
+        )
+      );
+    }
+
+    const root = document.getElementById('react-root');
+    if (root) {
+      createRoot(root).render(e(App));
+    }
+  </script>
+  <script>
+    (function(){
+      function closeAll(){
+        document.querySelectorAll('.main-nav-list.open').forEach(function(list){
+          list.classList.remove('open');
+          const btn = list.parentElement && list.parentElement.querySelector('.nav-toggle');
+          if(btn) btn.setAttribute('aria-expanded','false');
+        });
+      }
+      document.querySelectorAll('.main-nav').forEach(function(nav){
+        const toggle = nav.querySelector('.nav-toggle');
+        const list = nav.querySelector('.main-nav-list');
+        if(!toggle||!list) return;
+        toggle.addEventListener('click', function(e){
+          const open = list.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open? 'true':'false');
+          e.stopPropagation();
+        });
+        list.addEventListener('click', function(e){ e.stopPropagation(); });
+      });
+      document.addEventListener('click', closeAll);
+      document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeAll(); });
+    })();
+  </script>
 </body>
 </html>
