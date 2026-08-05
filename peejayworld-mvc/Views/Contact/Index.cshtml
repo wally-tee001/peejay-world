@@ -41,17 +41,23 @@
                     <form id="contact-form" class="page-form" asp-controller="Contact" asp-action="Submit" method="post">
                         @Html.AntiForgeryToken()
 
-                        <label for="contact-name">Name</label>
-                        <input id="contact-name" type="text" name="Name" value="@Model?.Name" placeholder="Your full name" required />
+                        <div asp-validation-summary="ModelOnly" class="form-error-summary" role="alert"></div>
 
-                        <label for="contact-email">Email</label>
-                        <input id="contact-email" type="email" name="Email" value="@Model?.Email" placeholder="you@example.com" required />
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" placeholder="Your full name" />
+                        <span asp-validation-for="Name" class="field-validation-error"></span>
 
-                        <label for="contact-subject">Subject</label>
-                        <input id="contact-subject" type="text" name="Subject" value="@Model?.Subject" placeholder="How can we help?" required />
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" placeholder="you@example.com" />
+                        <span asp-validation-for="Email" class="field-validation-error"></span>
 
-                        <label for="contact-message">Message</label>
-                        <textarea id="contact-message" name="Message" placeholder="Write your message here" required>@Model?.Message</textarea>
+                        <label asp-for="Subject"></label>
+                        <input asp-for="Subject" placeholder="How can we help?" />
+                        <span asp-validation-for="Subject" class="field-validation-error"></span>
+
+                        <label asp-for="Message"></label>
+                        <textarea asp-for="Message" placeholder="Write your message here"></textarea>
+                        <span asp-validation-for="Message" class="field-validation-error"></span>
 
                         <button type="submit" class="btn btn-primary">Send Message</button>
 
@@ -62,4 +68,8 @@
         </div>
     </div>
 </section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
 

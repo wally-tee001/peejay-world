@@ -9,18 +9,18 @@ using peejayworld_mvc.Data;
 
 #nullable disable
 
-namespace peejayworld_mvc.peejayworldmvc.Data.Migrations
+namespace peejayworld_mvc.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260507121314_ContactMessagesInit")]
-    partial class ContactMessagesInit
+    [Migration("20260805090128_AddNewsletterTable")]
+    partial class AddNewsletterTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.15")
+                .HasAnnotation("ProductVersion", "9.0.18")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -61,6 +61,30 @@ namespace peejayworld_mvc.peejayworldmvc.Data.Migrations
                     b.HasIndex("Email");
 
                     b.ToTable("contact_messages", (string)null);
+                });
+
+            modelBuilder.Entity("peejayworld_mvc.Models.NewsletterSubscription", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(320)
+                        .HasColumnType("character varying(320)");
+
+                    b.Property<DateTime>("SubscribedAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.ToTable("newsletter_subscriptions", (string)null);
                 });
 #pragma warning restore 612, 618
         }

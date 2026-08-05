@@ -1,0 +1,26 @@
+# Render blueprint for Peejay-world
+# Deploy: push this repo to GitHub, then in Render use "Blueprint" or paste this file.
+services:
+  - type: web
+    name: peejays-world
+    runtime: docker
+    plan: free
+    autoDeploy: true
+    buildCommand: dotnet publish peejayworld-mvc/peejayworld-mvc.csproj -c Release -o /opt/render/project/src/out
+    startCommand: dotnet /opt/render/project/src/out/peejayworld-mvc.dll
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ASPNETCORE_URLS
+        value: http://0.0.0.0:10000
+      - key: ConnectionStrings__DefaultConnection
+        fromDatabase:
+          name: peejays-world-db
+          property: connectionString
+    # The connection string from Render Postgres already includes the password,
+    # so no separate password env var is needed when using Render's managed DB.
+databases:
+  - name: peejays-world-db
+    plan: free
+    databaseName: peejayworld
+    user: peejayworld

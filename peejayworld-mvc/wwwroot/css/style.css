@@ -571,4 +571,30 @@ input {
   }
 }
 
+/* Validation error styles for contact form */
+.form-error-summary {
+  color: #e57373;
+  background: rgba(229, 115, 115, 0.1);
+  border: 1px solid rgba(229, 115, 115, 0.3);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.field-validation-error {
+  display: block;
+  color: #e57373;
+  font-size: 0.82rem;
+  margin-top: -0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.input-validation-error {
+  border-color: #e57373 !important;
+  box-shadow: 0 0 0 2px rgba(229, 115, 115, 0.2);
+}
+
+
+
 

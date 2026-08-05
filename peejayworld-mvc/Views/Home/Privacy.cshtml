@@ -1,6 +1,55 @@
 ﻿@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+        <div class="hero-copy">
+            <p class="eyebrow">Privacy Policy</p>
+            <h1>Your privacy matters to us.</h1>
+            <p>Learn how Peejay's World collects, uses, and protects your personal information.</p>
+            <div class="hero-actions">
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section collections-section">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">Last updated</p>
+            <h2>Peejay's World Privacy Policy</h2>
+            <p>Effective date: @DateTime.UtcNow.ToString("MMMM d, yyyy")</p>
+        </div>
+
+        <div class="card product-card">
+            <div class="card-body">
+                <h3>1. Information We Collect</h3>
+                <p>When you use our contact form, we collect the information you choose to provide, including your name, email address, subject, and message. We do not collect personal information unless you voluntarily submit it to us.</p>
+
+                <h3>2. How We Use Your Information</h3>
+                <p>We use the information you provide to respond to your inquiries, provide customer support, and improve our services. We do not sell, rent, or trade your personal information to third parties.</p>
+
+                <h3>3. Data Storage and Security</h3>
+                <p>Contact messages you submit are stored securely in our database. We take reasonable technical and organizational measures to protect your information from unauthorized access, loss, or misuse.</p>
+
+                <h3>4. Cookies and Analytics</h3>
+                <p>Our site may use cookies and similar technologies to enhance your browsing experience and understand how our site is used. You can control cookies through your browser settings.</p>
+
+                <h3>5. Third-Party Services</h3>
+                <p>Our site may load content (such as fonts and images) from third-party providers like Google Fonts and Unsplash. These providers may process certain data in accordance with their own privacy policies.</p>
+
+                <h3>6. Your Rights</h3>
+                <p>You have the right to access, correct, or request deletion of the personal information we hold about you. To exercise these rights, please contact us using the contact form on our site.</p>
+
+                <h3>7. Changes to This Policy</h3>
+                <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date.</p>
+
+                <h3>8. Contact Us</h3>
+                <p>If you have any questions about this Privacy Policy, please reach out to us at <a href="mailto:hello@peejaysworld.com">hello@peejaysworld.com</a>.</p>
+            </div>
+        </div>
+    </div>
+</section>
