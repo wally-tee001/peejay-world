@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using peejayworld_mvc.Data;
@@ -20,6 +21,17 @@ builder.Services.AddHsts(options =>
     options.MaxAge = TimeSpan.FromDays(365);
     options.IncludeSubDomains = true;
     options.Preload = true;
+});
+
+// Trust the X-Forwarded-* headers set by reverse proxies (e.g. Render, Nginx, Azure).
+// Needed so HTTPS redirection, HSTS, and logging see the real client scheme/host.
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    // Only trust proxies on the loopback / localhost by default. In production where the
+    // proxy is external (Render), open up KnownNetworks/KnownProxies as appropriate.
+    options.KnownNetworks.Clear();
+    options.KnownProxies.Clear();
 });
 
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -47,7 +59,25 @@ static string GetConnectionString(IConfiguration configuration)
 
 var app = builder.Build();
 
+// Apply any pending EF Core migrations on startup (safe for Render/containers).
+// Wrap in try/catch so a DB that is briefly unavailable doesn't crash the web host.
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    try
+    {
+        await db.Database.MigrateAsync();
+    }
+    catch (Exception ex)
+    {
+        // Log the failure but keep the app running; migrations can be retried via `dotnet ef database update`.
+        app.Logger.LogError(ex, "Failed to apply database migrations on startup.");
+    }
+}
+
 // Configure the HTTP request pipeline.
+app.UseForwardedHeaders();
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

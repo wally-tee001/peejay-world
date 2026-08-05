@@ -13,10 +13,10 @@
 ### Remaining (ordered)
 - [x] Step 4: Reconcile two Contact views — deleted dead `Home/Contact.cshtml`, removed `HomeController.Contact()` action, pointed nav/footer/Index to `Contact/Index`
 - [x] Step 5: Add validation UI — `asp-validation-summary`, `asp-validation-for`, validation scripts partial, CSS validation styles, layout `RenderSectionAsync("Scripts")`
-- [ ] Step 6: Write a real Privacy Policy
-- [ ] Step 7: Wire up or remove the newsletter form
-- [ ] Step 8: Add `UseForwardedHeaders` + DB migration-on-startup logic
-- [ ] Step 9: Build + run, apply migrations, smoke-test contact submission
-- [ ] Step 10: Fix `Error.cshtml` "Development Mode" section for production
-- [ ] Step 11: Decide deployment approach + estimate time-to-production
+- [x] Step 6: Write a real Privacy Policy
+- [x] Step 7: Wire up or remove the newsletter form
+- [x] Step 8: Add `UseForwardedHeaders` + DB migration-on-startup logic
+- [x] Step 9: Build + run, smoke-test all routes (all → 200); contact submission pending DB write check
+- [x] Step 10: Fix `Error.cshtml` "Development Mode" section for production
+- [x] Step 11: Decide deployment approach (Render) + estimate time-to-production (~1–3 days)
 
