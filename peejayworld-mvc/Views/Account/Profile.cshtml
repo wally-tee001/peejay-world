@@ -1,0 +1,72 @@
+@model peejayworld_mvc.ViewModels.UserProfileViewModel
+
+@{
+    ViewData["Title"] = "My Account";
+}
+
+<section class="section account-section">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">My Account</p>
+            <h2>Manage your profile, payment details, and contact info.</h2>
+        </div>
+
+        @if (ViewBag.ProfileSaved == true)
+        {
+            <div class="alert alert-success">Your profile was updated successfully.</div>
+        }
+
+        <div class="card form-card">
+            <div class="card-body">
+                <form asp-action="Profile" method="post">
+                    @Html.AntiForgeryToken()
+                    <input asp-for="UserId" type="hidden" />
+                    <div asp-validation-summary="ModelOnly" class="form-error-summary"></div>
+
+                    <div class="form-group">
+                        <label asp-for="FullName"></label>
+                        <input asp-for="FullName" />
+                        <span asp-validation-for="FullName"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" />
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber"></label>
+                        <input asp-for="PhoneNumber" />
+                        <span asp-validation-for="PhoneNumber"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ShippingAddress"></label>
+                        <textarea asp-for="ShippingAddress"></textarea>
+                        <span asp-validation-for="ShippingAddress"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BillingAddress"></label>
+                        <textarea asp-for="BillingAddress"></textarea>
+                        <span asp-validation-for="BillingAddress"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CardBrand"></label>
+                        <input asp-for="CardBrand" />
+                        <span asp-validation-for="CardBrand"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CardLast4"></label>
+                        <input asp-for="CardLast4" maxlength="4" />
+                        <span asp-validation-for="CardLast4"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CardExpiry"></label>
+                        <input asp-for="CardExpiry" placeholder="MM/YYYY" />
+                        <span asp-validation-for="CardExpiry"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Save Profile</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

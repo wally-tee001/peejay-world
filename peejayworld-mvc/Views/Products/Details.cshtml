@@ -1,0 +1,24 @@
+@model peejayworld_mvc.Models.Product
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<section class="section product-detail-section">
+    <div class="container product-detail-layout">
+        <div class="product-image-card">
+            <img src="@Model.ImageUrl" alt="@Model.Name" loading="lazy" />
+        </div>
+        <div class="product-detail-body">
+            <p class="eyebrow">@Model.Category</p>
+            <h1>@Model.Name</h1>
+            <p class="product-description">@Model.Description</p>
+            <p class="price">@Model.Price.ToString("C")</p>
+            <form asp-controller="Cart" asp-action="Add" method="post">
+                <input type="hidden" name="productId" value="@Model.Id" />
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+            </form>
+            <a asp-action="Index" class="text-link">Back to Shop</a>
+        </div>
+    </div>
+</section>

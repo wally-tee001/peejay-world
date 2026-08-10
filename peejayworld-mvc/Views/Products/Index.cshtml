@@ -1,0 +1,35 @@
+@model IEnumerable<peejayworld_mvc.Models.Product>
+
+@{
+    ViewData["Title"] = "Shop";
+}
+
+<section class="section collections-section">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">Shop Watches</p>
+            <h2>Explore our curated office-ready wristwatch collection.</h2>
+        </div>
+        <div class="grid cards-grid">
+            @foreach (var product in Model)
+            {
+                <article class="card product-card">
+                    <img src="@product.ImageUrl" alt="@product.Name" loading="lazy" />
+                    <div class="card-body">
+                        <span>@product.Category</span>
+                        <h3>@product.Name</h3>
+                        <p>@product.Description</p>
+                        <p class="price">@product.Price.ToString("C")</p>
+                        <div class="product-actions">
+                            <a asp-action="Details" asp-route-id="@product.Id" class="text-link">View details</a>
+                            <form asp-controller="Cart" asp-action="Add" method="post" style="display:inline-block;">
+                                <input type="hidden" name="productId" value="@product.Id" />
+                                <button type="submit" class="btn btn-primary">Add to Cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </article>
+            }
+        </div>
+    </div>
+</section>

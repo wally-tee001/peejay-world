@@ -1,0 +1,58 @@
+@model IEnumerable<peejayworld_mvc.ViewModels.CartItemViewModel>
+
+@{
+    ViewData["Title"] = "Your Cart";
+    var total = Model.Sum(item => item.TotalPrice);
+}
+
+<section class="section cart-section">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">Shopping Cart</p>
+            <h2>Review and update your cart before checkout.</h2>
+        </div>
+
+        @if (!Model.Any())
+        {
+            <div class="card product-card">
+                <div class="card-body">
+                    <h3>Your cart is empty.</h3>
+                    <a asp-controller="Products" asp-action="Index" class="btn btn-secondary">Continue Shopping</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="cart-grid">
+                @foreach (var item in Model)
+                {
+                    <article class="card product-card">
+                        <img src="@item.Product?.ImageUrl" alt="@item.Product?.Name" loading="lazy" />
+                        <div class="card-body">
+                            <span>@item.Product?.Category</span>
+                            <h3>@item.Product?.Name</h3>
+                            <p>@item.Product?.Description</p>
+                            <p class="price">@item.TotalPrice.ToString("C")</p>
+                            <form asp-action="Update" method="post" class="cart-action-form">
+                                <input type="hidden" name="productId" value="@item.Product?.Id" />
+                                <label>
+                                    Quantity
+                                    <input type="number" name="quantity" value="@item.Quantity" min="1" />
+                                </label>
+                                <button type="submit" class="btn btn-secondary">Update</button>
+                            </form>
+                            <form asp-action="Remove" method="post" class="cart-action-form">
+                                <input type="hidden" name="productId" value="@item.Product?.Id" />
+                                <button type="submit" class="btn btn-danger">Remove</button>
+                            </form>
+                        </div>
+                    </article>
+                }
+            </div>
+            <div class="cart-summary">
+                <h3>Cart total: @total.ToString("C")</h3>
+                <a asp-controller="Checkout" asp-action="Index" class="btn btn-primary">Proceed to Checkout</a>
+            </div>
+        }
+    </div>
+</section>

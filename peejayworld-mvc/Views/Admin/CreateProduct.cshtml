@@ -1,0 +1,88 @@
+@model peejayworld_mvc.ViewModels.ProductManageViewModel
+
+@{
+    ViewData["Title"] = "Create Product";
+}
+
+<section class="section admin-section">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">Add Product</p>
+            <h2>Create a new watch listing.</h2>
+        </div>
+
+        <div class="card form-card">
+            <div class="card-body">
+                <form asp-action="CreateProduct" method="post" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" />
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description"></label>
+                        <textarea asp-for="Description"></textarea>
+                        <span asp-validation-for="Description"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Category"></label>
+                        <input asp-for="Category" />
+                        <span asp-validation-for="Category"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageFile">Upload product image</label>
+                        <input asp-for="ImageFile" type="file" accept="image/*" />
+                        <span asp-validation-for="ImageFile"></span>
+                        <div class="image-preview-container">
+                            <img id="imagePreview" class="image-preview" style="display:none; max-width: 100%; margin-top: 1rem;" alt="Selected product preview" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageUrl">Or use external image URL</label>
+                        <input asp-for="ImageUrl" />
+                        <span asp-validation-for="ImageUrl"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price"></label>
+                        <input asp-for="Price" />
+                        <span asp-validation-for="Price"></span>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input asp-for="IsFeatured" />
+                            Featured product
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        const imageFileInput = document.getElementById('ImageFile');
+        const imagePreview = document.getElementById('imagePreview');
+
+        if (imageFileInput && imagePreview) {
+            imageFileInput.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (!file) {
+                    imagePreview.style.display = 'none';
+                    imagePreview.src = '';
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target?.result || '';
+                    imagePreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+    </script>
+}

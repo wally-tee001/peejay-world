@@ -1,0 +1,52 @@
+@model IEnumerable<peejayworld_mvc.Models.Product>
+
+@{
+    ViewData["Title"] = "Manage Products";
+}
+
+<section class="section admin-section">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">Product Management</p>
+            <h2>Create, edit, and remove inventory.</h2>
+        </div>
+
+        <div class="admin-actions">
+            <a asp-action="CreateProduct" class="btn btn-primary">Add New Product</a>
+            <a asp-action="Index" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Featured</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model)
+                    {
+                        <tr>
+                            <td>@product.Name</td>
+                            <td>@product.Category</td>
+                            <td>@product.Price.ToString("C")</td>
+                            <td>@(product.IsFeatured ? "Yes" : "No")</td>
+                            <td>
+                                <a asp-action="EditProduct" asp-route-id="@product.Id" class="text-link">Edit</a>
+                                <form asp-action="DeleteProduct" method="post" style="display:inline-block; margin-left: 1rem;">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@product.Id" />
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

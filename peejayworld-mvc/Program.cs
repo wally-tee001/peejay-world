@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using peejayworld_mvc.Data;
 using Serilog;
 
@@ -14,6 +17,24 @@ builder.Host.UseSerilog((context, services, configuration) => configuration
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 6;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = true;
+})
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
 
 // HSTS (HTTP Strict Transport Security) - only sent over HTTPS in non-Development.
 builder.Services.AddHsts(options =>
@@ -67,6 +88,7 @@ using (var scope = app.Services.CreateScope())
     try
     {
         await db.Database.MigrateAsync();
+        await IdentityDataSeeder.SeedAsync(scope.ServiceProvider);
     }
     catch (Exception ex)
     {
@@ -77,6 +99,7 @@ using (var scope = app.Services.CreateScope())
 
 // Configure the HTTP request pipeline.
 app.UseForwardedHeaders();
+app.UseStaticFiles();
 
 if (!app.Environment.IsDevelopment())
 {
@@ -94,13 +117,13 @@ app.Use(async (context, next) =>
     headers["Referrer-Policy"] = "strict-origin-when-cross-origin";
     headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=()";
 
-    // CSP: allow self + Google Fonts + Unplash images (used by the views).
+    // CSP: allow self + Google Fonts + Unsplash images + selected remote product assets.
     headers["Content-Security-Policy"] =
         "default-src 'self'; " +
         "script-src 'self' 'unsafe-inline'; " +
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
         "font-src 'self' https://fonts.gstatic.com; " +
-        "img-src 'self' data: https://images.unsplash.com; " +
+        "img-src 'self' data: https://images.unsplash.com https://rukmini1.flixcart.com https://ng.jumia.is https://encrypted-tbn0.gstatic.com https://i5.walmartimages.com; " +
         "connect-src 'self'; " +
         "base-uri 'self'; " +
         "form-action 'self'; " +
@@ -112,6 +135,8 @@ app.Use(async (context, next) =>
 app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseAuthentication();
+app.UseSession();
 app.UseAuthorization();
 
 app.MapStaticAssets();

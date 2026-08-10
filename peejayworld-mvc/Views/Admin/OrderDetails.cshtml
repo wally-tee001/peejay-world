@@ -1,0 +1,83 @@
+@model peejayworld_mvc.Models.Order
+
+@{
+    ViewData["Title"] = $"Order #{Model.Id}";
+}
+
+<section class="section admin-section">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">Order details</p>
+            <h2>Order #@Model.Id</h2>
+        </div>
+
+        <div class="admin-actions">
+            <a asp-action="Index" class="btn btn-secondary">Back to Dashboard</a>
+            <a asp-action="Products" class="btn btn-secondary">Manage Products</a>
+        </div>
+
+        <div class="order-detail-grid">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Customer</h3>
+                    <p><strong>@Model.FullName</strong></p>
+                    <p>@Model.Email</p>
+                    <p>@Model.ShippingAddress</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h3>Status</h3>
+                    <p>@Model.Status</p>
+                    <form asp-action="UpdateOrderStatus" method="post" class="status-form">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <label for="status">Update status</label>
+                        <select id="status" name="status">
+                            <option value="Pending" selected="@(Model.Status == "Pending")">Pending</option>
+                            <option value="Processing" selected="@(Model.Status == "Processing")">Processing</option>
+                            <option value="Shipped" selected="@(Model.Status == "Shipped")">Shipped</option>
+                            <option value="Completed" selected="@(Model.Status == "Completed")">Completed</option>
+                            <option value="Cancelled" selected="@(Model.Status == "Cancelled")">Cancelled</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary">Save status</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="card order-items-card">
+            <div class="card-body">
+                <h3>Order items</h3>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Unit price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Items)
+                        {
+                            <tr>
+                                <td>@item.Product?.Name</td>
+                                <td>@item.UnitPrice.ToString("C")</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.TotalPrice.ToString("C")</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3"><strong>Order total</strong></td>
+                            <td><strong>@Model.TotalAmount.ToString("C")</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

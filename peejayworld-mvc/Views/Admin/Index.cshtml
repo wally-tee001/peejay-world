@@ -1,0 +1,129 @@
+@model peejayworld_mvc.ViewModels.AdminDashboardViewModel
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+    var labelsJson = System.Text.Json.JsonSerializer.Serialize(Model.ChartLabels);
+    var valuesJson = System.Text.Json.JsonSerializer.Serialize(Model.ChartValues);
+}
+
+<section class="section admin-section">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">Admin Dashboard</p>
+            <h2>Recent orders and sales performance.</h2>
+        </div>
+
+        <div class="admin-actions">
+            <a asp-action="Products" class="btn btn-primary">Manage Products</a>
+        </div>
+
+        <div class="admin-metrics-grid">
+            <div class="metric-card">
+                <p class="metric-label">Sales (7 days)</p>
+                <p class="metric-value">@Model.TotalSalesLast7Days.ToString("C")</p>
+            </div>
+            <div class="metric-card">
+                <p class="metric-label">Sales (30 days)</p>
+                <p class="metric-value">@Model.TotalSalesLast30Days.ToString("C")</p>
+            </div>
+            <div class="metric-card">
+                <p class="metric-label">Sales (12 months)</p>
+                <p class="metric-value">@Model.TotalSalesLast365Days.ToString("C")</p>
+            </div>
+        </div>
+
+        <div class="admin-chart-card">
+            <h3>Weekly revenue</h3>
+            <canvas id="salesChart" width="800" height="320"></canvas>
+        </div>
+
+        <div class="section-heading" style="margin-top: 2rem;">
+            <h3>Recent orders</h3>
+        </div>
+
+        <div class="table-responsive">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Order</th>
+                        <th>Customer</th>
+                        <th>Status</th>
+                        <th>Total</th>
+                        <th>Placed</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.RecentOrders)
+                    {
+                        <tr>
+                            <td>@order.Id</td>
+                            <td>@order.FullName<br /><small>@order.Email</small></td>
+                            <td>@order.Status</td>
+                            <td>@order.TotalAmount.ToString("C")</td>
+                            <td>@order.CreatedAtUtc.ToString("yyyy-MM-dd")</td>
+                            <td>
+                                <a asp-action="OrderDetails" asp-route-id="@order.Id" class="text-link">View</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const labels = @Html.Raw(labelsJson);
+        const data = @Html.Raw(valuesJson);
+
+        const ctx = document.getElementById('salesChart');
+        if (ctx) {
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Revenue',
+                        data: data,
+                        backgroundColor: 'rgba(38, 132, 255, 0.15)',
+                        borderColor: 'rgba(38, 132, 255, 1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            grid: { display: false }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return 'Revenue: ' + new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+}

@@ -17,13 +17,29 @@
                 <button class="mobile-menu-toggle" aria-label="Toggle navigation" id="mobile-menu-toggle">☰</button>
                 <nav class="main-nav" id="main-nav">
                     <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    <a asp-area="" asp-controller="Home" asp-action="About">About Us</a>
+                    <a asp-area="" asp-controller="Products" asp-action="Index">Shop</a>
+                    <a asp-area="" asp-controller="Cart" asp-action="Index">Cart</a>
+                    <a asp-area="" asp-controller="Home" asp-action="About">About</a>
                     <a asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
-                    <a asp-area="" asp-controller="Home" asp-action="PersonalCare">Personal Care</a>
-                    <a asp-area="" asp-controller="Home" asp-action="CosmeticsStore">Cosmetics</a>
-                    <a asp-area="" asp-controller="Home" asp-action="BeautySalon">Beauty Salon</a>
-                    <a asp-area="" asp-controller="Home" asp-action="Index" fragment="newsletter">Join</a>
+                    @if (User?.Identity?.IsAuthenticated == true)
+                    {
+                        <a asp-area="" asp-controller="Account" asp-action="Profile">My Account</a>
+                        <a asp-area="" asp-controller="Account" asp-action="Orders">My Orders</a>
+                        <a asp-area="" asp-controller="Account" asp-action="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
+                        }
+                    }
+                    else
+                    {
+                        <a asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                        <a asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                    }
                 </nav>
+                <form id="logout-form" asp-area="" asp-controller="Account" asp-action="Logout" method="post" style="display:none;">
+                    @Html.AntiForgeryToken()
+                </form>
             </div>
         </header>
 

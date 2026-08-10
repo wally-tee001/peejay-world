@@ -1,0 +1,47 @@
+@model peejayworld_mvc.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<section class="section auth-section">
+    <div class="container">
+        <div class="card form-card auth-card">
+            <div class="card-body">
+                <h2>Sign in</h2>
+                <form asp-action="Login" method="post">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="form-error-summary"></div>
+                    <input type="hidden" asp-for="ReturnUrl" />
+
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" />
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password"></label>
+                        <input asp-for="Password" />
+                        <span asp-validation-for="Password"></span>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input asp-for="RememberMe" />
+                            Remember me
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+
+                <div class="auth-note">
+                    <p>Need help? Use <strong>admin@peejayworld.com</strong> / <strong>Admin@1234</strong> for seeded admin access in development.</p>
+                </div>
+                <p>Don't have an account? <a asp-action="Register">Create one</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
