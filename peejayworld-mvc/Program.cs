@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using peejayworld_mvc.Data;
 using Serilog;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -79,6 +80,13 @@ static string GetConnectionString(IConfiguration configuration)
 }
 
 var app = builder.Build();
+
+// Configure Stripe API key from configuration or environment
+var stripeKey = builder.Configuration["Stripe:SecretKey"] ?? Environment.GetEnvironmentVariable("STRIPE_SECRET_KEY");
+if (!string.IsNullOrWhiteSpace(stripeKey))
+{
+    StripeConfiguration.ApiKey = stripeKey;
+}
 
 // Apply any pending EF Core migrations on startup (safe for Render/containers).
 // Wrap in try/catch so a DB that is briefly unavailable doesn't crash the web host.

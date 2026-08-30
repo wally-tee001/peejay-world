@@ -1,4 +1,17 @@
 @{
+    ViewData["Title"] = "Payment success";
+}
+
+<div class="section auth-section">
+  <div class="auth-card">
+    <div class="card-body">
+      <h2>Payment successful</h2>
+      <p>Thank you for your purchase. Your session id is: <strong>@ViewData["SessionId"]</strong></p>
+      <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Return to shop</a>
+    </div>
+  </div>
+</div>
+@{
     ViewData["Title"] = "Order Confirmed";
 }
 

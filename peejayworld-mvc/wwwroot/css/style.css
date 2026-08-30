@@ -1,4 +1,21 @@
+/* Default (light) theme variables */
 :root {
+  --bg: #fbfaf9;
+  --surface: #ffffff;
+  --surface-soft: #f6f5f4;
+  --text: #1b1a18;
+  --gold: #b8862a;
+  --muted: #6b6350;
+  --primary: #b8862a;
+  --primary-dark: #8f6a20;
+  --accent: #f7e9bf;
+  --border: rgba(27, 26, 24, 0.06);
+  --shadow: 0 12px 30px rgba(27, 26, 24, 0.06);
+  --radius: 16px;
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] {
   --bg: #0b0906;
   --surface: rgba(255, 255, 255, 0.04);
   --surface-soft: rgba(255, 255, 255, 0.06);
@@ -25,7 +42,7 @@ body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   color: var(--text);
-  background: radial-gradient(circle at top, #1c1812 0%, #0b0906 35%, #050402 100%);
+  background: var(--bg);
 }
 
 img {
@@ -53,8 +70,8 @@ input {
   top: 0;
   z-index: 10;
   backdrop-filter: blur(16px);
-  background: rgba(8, 7, 5, 0.92);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
 }
 
 .header-inner {
@@ -418,8 +435,8 @@ input {
   width: 100%;
   padding: 1rem 1.2rem;
   border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
   color: var(--text);
   outline: none;
 }
@@ -593,6 +610,65 @@ input {
 .input-validation-error {
   border-color: #e57373 !important;
   box-shadow: 0 0 0 2px rgba(229, 115, 115, 0.2);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Auth card / login form styles */
+.auth-section {
+  padding: 4.5rem 0;
+}
+
+.auth-card {
+  max-width: 520px;
+  margin: 0 auto;
+  border-radius: 20px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.auth-card .card-body {
+  padding: 2rem;
+}
+
+.auth-hero {
+  padding: 2rem;
+  background: linear-gradient(180deg, var(--surface-soft), var(--surface));
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.auth-hero h3 { margin: 0 0 0.5rem; }
+.auth-hero p { margin: 0; color: var(--muted); }
+
+.auth-form .form-actions { margin-top: 1.25rem; }
+
+.auth-note { color: var(--muted); font-size: 0.9rem; }
+
+/* Smooth theme transitions */
+html, body, .auth-card, .card-body, .page-form input, .page-form textarea, .main-nav a, .site-header, .footer-inner {
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.btn, .btn-primary, .btn-secondary {
+  transition: background 0.35s ease, color 0.35s ease, transform 0.2s ease, box-shadow 0.35s ease;
 }
 
 

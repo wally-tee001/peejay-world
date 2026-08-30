@@ -174,7 +174,6 @@ C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\zh-Hans\Mi
 C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\obj\Debug\net9.0\peejayworld-mvc.csproj.AssemblyReference.cache
 C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\obj\Debug\net9.0\peejaywo.F7D13B08.Up2Date
-C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\obj\Debug\net9.0\compressed\bhzkfozeos-v1w1n7yapd.gz
 C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\obj\Debug\net9.0\compressed\9a1c81fa75-t1cqhe9u97.gz
 C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\obj\Debug\net9.0\compressed\k34bd3rlr8-sejl45xvog.gz
 C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\obj\Debug\net9.0\compressed\qq7xvfkpur-xvp3kq03qx.gz
@@ -210,3 +209,18 @@ C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\Microsoft.
 C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\Newtonsoft.Json.dll
+C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\Stripe.net.dll
+C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
+C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\System.Drawing.Common.dll
+C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\System.Security.Permissions.dll
+C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\System.Windows.Extensions.dll
+C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\obj\Debug\net9.0\compressed\bhzkfozeos-vkjwxhqag0.gz
+C:\Users\User\Wally_Tee\peejay-world\peejayworld-mvc\obj\Debug\net9.0\compressed\l9sk2z9zc7-ywchzf6ng9.gz

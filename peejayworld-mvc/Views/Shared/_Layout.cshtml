@@ -14,19 +14,39 @@
         <header class="site-header">
             <div class="container header-inner">
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="brand">peejay's world</a>
-                <button class="mobile-menu-toggle" aria-label="Toggle navigation" id="mobile-menu-toggle">☰</button>
+                <div style="display:flex;gap:0.5rem;align-items:center">
+                    <button id="theme-toggle" class="theme-toggle" title="Toggle theme" aria-pressed="false">🌙</button>
+                </div>
+                @{
+                    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+                    var path = Context.Request.Path;
+                    var returnUrl = Context.Request.Query["ReturnUrl"].ToString();
+                    var isAdminPage = string.Equals(currentController, "Admin", StringComparison.OrdinalIgnoreCase)
+                        || path.StartsWithSegments("/Admin", StringComparison.OrdinalIgnoreCase)
+                        || (!string.IsNullOrWhiteSpace(returnUrl) && returnUrl.StartsWith("/Admin", StringComparison.OrdinalIgnoreCase));
+                }
+
                 <nav class="main-nav" id="main-nav">
                     <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    <a asp-area="" asp-controller="Products" asp-action="Index">Shop</a>
-                    <a asp-area="" asp-controller="Cart" asp-action="Index">Cart</a>
                     <a asp-area="" asp-controller="Home" asp-action="About">About</a>
-                    <a asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
+                    @if (!isAdminPage)
+                    {
+                        <a asp-area="" asp-controller="Products" asp-action="Index">Shop</a>
+                        <a asp-area="" asp-controller="Cart" asp-action="Index">Cart</a>
+                        <a asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
+                    }
+
                     @if (User?.Identity?.IsAuthenticated == true)
                     {
-                        <a asp-area="" asp-controller="Account" asp-action="Profile">My Account</a>
-                        <a asp-area="" asp-controller="Account" asp-action="Orders">My Orders</a>
+                        @if (!isAdminPage)
+                        {
+                            <a asp-area="" asp-controller="Account" asp-action="Profile">My Account</a>
+                            <a asp-area="" asp-controller="Account" asp-action="Orders">My Orders</a>
+                        }
+
                         <a asp-area="" asp-controller="Account" asp-action="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                        @if (User.IsInRole("Admin"))
+
+                        @if (User.IsInRole("Admin") && !isAdminPage)
                         {
                             <a asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
                         }
@@ -71,6 +91,7 @@
             }
         })();
     </script>
+    <script src="~/js/theme.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
